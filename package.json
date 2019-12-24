@@ -1,15 +1,20 @@
 {
-  "name": "RS232",
+  "name": "trame",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
+    "package-win": "electron-packager . logiciel-trame --overwrite --asar=true --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"ProgrammeSIN\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --prune=true --out=release-builds"
   },
   "author": "",
   "license": "ISC",
-  "keywords": [],
-  "description": "this rs232 plot by electron",
+  "dependencies": {
+    "electron": "^7.1.4"
+  },
   "devDependencies": {
-    "electron": "^7.1.7"
+    "electron-packager": "^14.1.1"
   }
 }

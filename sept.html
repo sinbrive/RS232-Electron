@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="main.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+  <div class="container" align="center">
+    <div class="explication">
+      (CTRL+R pour reset le programme) Etape 1:<br>
+      Entrez une valeur soit en décimal soit en Hecadécimal soit en binaire.<br>
+      Etape 2:<br>
+      Cliquez sur le bouton correspondant l'entrée utilisée.<br>
+      Etape 3:<br>
+      Choisir le nombre de bits stop
+      <select id="n_bits_stop">
+          <option value="2">2</option>
+          <option value="1">1</option>
+          <option value="0">0</option>
+    </select><br>
+      Etape 4:<br>
+      Cliquez sur bouton dessiner la trame.<br>
+      Programme fait par Julien Morin TSTI2D3<br><a href="index.html">Retour Menu</a> (Trame 7 Bits)
+    </div>
+    <form action="">
+     
+    <p><label class="decimal" for="decimal">Décimal&#160;: </label> 
+    <input class="entrée_1" type="text" id="decimal" name="decimal" >
+    <input class="bouton_1" type="button" name="submit1" value="&#8674;" onClick="xdecimal();"></p>
+     
+    <p><label class="hexadecimal" for="hexadecimal">Hexadécimal&#160;: </label> 
+    <input class="entrée_2" type="text" id="hexadecimal" name="hexadecimal">
+    <input class="bouton_2" type="button" name="submit2" value="&#8674;" onClick="xhexadecimal();"></p>
+     
+    <p><label class="binaire" for="hexadecimal">Binaire&#160;: </label> 
+    <input class="entrée_3" type="text" id="binaire" name="binaire">
+    <input class="bouton_3" type="button" name="submit3" value="&#8674;" onClick="xbinaire();"></p><br>
+    <input type="button" onclick="lancer()" value="Dessiner trame" class="draw_button">
+    
+    </form>
+    <div class="trame">
+    <div class="bloc_1grand"></div>
+    <div class="bloc_1petit"></div>
+    <div class="bloc_2grand"></div>
+    <div class="bloc_2petit"></div>
+    <div class="bloc_3grand"></div>
+    <div class="bloc_3petit"></div>
+    <div class="bloc_4grand"></div>
+    <div class="bloc_4petit"></div>
+    <div class="bloc_5grand"></div>
+    <div class="bloc_5petit"></div>
+    <div class="bloc_6grand"></div>
+    <div class="bloc_6petit"></div>
+    <div class="bloc_7grand"></div>
+    <div class="bloc_7petit"></div>
+    <div class="bloc_8grand"></div>
+    <div class="bloc_8petit"></div>
+    <div class="stop"></div>
+    <div class="stop-2"></div>
+    <div class="text-stop">Stop</div>
+    <div class="text-stop-2">Stop 2</div>
+    <div class="text-start">Start</div>
+    </div>
+  </div>
+  </body>
+  <script>
+  n_bits_stop = document.getElementById('n_bits_stop').value;
+  $(document).ready(function(){     
+    $(".bloc_2grand").hide();
+    $(".bloc_2petit").hide();
+    $(".bloc_3grand").hide();
+    $(".bloc_3petit").hide();
+    $(".bloc_4grand").hide();
+    $(".bloc_4petit").hide();
+    $(".bloc_5grand").hide();
+    $(".bloc_5petit").hide();
+    $(".bloc_6grand").hide();
+    $(".bloc_6petit").hide();
+    $(".bloc_7grand").hide();
+    $(".bloc_7petit").hide();
+    $(".bloc_8grand").hide();
+    $(".bloc_8petit").hide();
+    $(".stop").hide();
+    $(".stop-2").hide();
+    $(".text-stop").hide();
+    $(".text-stop-2").hide();
+  });
+
+  function xdecimal()
+  {
+  decimal = document.getElementById("decimal");
+  hexadecimal = document.getElementById("hexadecimal");
+  binaire = document.getElementById("binaire");
+   
+  hexadecimal.value = (decimal.value-0).toString(16);
+  binaire.value = (decimal.value-0).toString(2);
+  }
+   
+  function xhexadecimal()
+  {
+  decimal = document.getElementById("decimal");
+  hexadecimal = document.getElementById("hexadecimal");
+  binaire = document.getElementById("binaire");
+   
+  decimal.value = parseInt(hexadecimal.value,16);
+  binaire.value = (parseInt(hexadecimal.value,16)).toString(2);
+  }
+   
+  function xbinaire()
+  {
+  decimal = document.getElementById("decimal");
+  hexadecimal = document.getElementById("hexadecimal");
+  binaire = document.getElementById("binaire");
+   
+  decimal.value = parseInt(binaire.value,2);
+  hexadecimal.value = (parseInt(binaire.value,2)).toString(16);
+  }
+
+
+  function lancer(){
+    valeur_decimal_entier = parseInt(document.getElementById("decimal").value,10);
+    n_bits_stop = document.getElementById('n_bits_stop').value;
+    console.log('Nombre de bits de stop ' + n_bits_stop);
+    if (n_bits_stop == "0") {
+      $(".stop").hide(1000,"linear");
+      $(".stop-2").hide(1000,"linear");
+      $(".text-stop").hide(1000,"linear");
+      $(".text-stop-2").hide(1000,"linear");
+    } else if (n_bits_stop == "1"){
+      $(".stop").show(1000,"linear");
+      $(".stop-2").hide(1000,"linear");
+      $(".text-stop").show(1000,"linear");
+      $(".text-stop-2").hide(1000,"linear");
+    } else {
+      $(".stop").show(1000,"linear");
+      $(".stop-2").show(1000,"linear");
+      $(".text-stop").show(1000,"linear");
+      $(".text-stop-2").show(1000,"linear");
+    }
+
+    if (valeur_decimal_entier >127){
+      alert('La valeur supporté ne peut pas être supérieure à 127.');
+    } else if (valeur_decimal_entier < 0){
+      alert('La valeur supporté ne peut pas être inféreure à 0.');
+    } else {
+      valeur_trame_binaire = "0";
+      valeur_binaire = document.getElementById("binaire").value;
+      console.log(valeur_binaire);
+      if(valeur_binaire.length == 1){
+        valeur_trame_binaire = ('000000' + valeur_binaire);
+        console.log(valeur_trame_binaire);  
+      } else if (valeur_binaire.length == 2){
+        valeur_trame_binaire = ('00000' + valeur_binaire);
+        console.log(valeur_trame_binaire);
+      } else if (valeur_binaire.length == 3){
+        valeur_trame_binaire = ('0000' + valeur_binaire);
+        console.log(valeur_trame_binaire);
+      } else if (valeur_binaire.length == 4){
+        valeur_trame_binaire = ('000' + valeur_binaire);
+        console.log(valeur_trame_binaire);
+      }else if (valeur_binaire.length == 5){
+        valeur_trame_binaire = ('00' + valeur_binaire);
+        console.log(valeur_trame_binaire);
+      }else if (valeur_binaire.length == 6){
+        valeur_trame_binaire = ('0' + valeur_binaire);
+        console.log(valeur_trame_binaire);
+      }else if (valeur_binaire.length == 7){
+        valeur_trame_binaire = (valeur_binaire);
+        console.log(valeur_trame_binaire);
+      }
+
+      var trame = valeur_trame_binaire.split("",7);
+      console.log("Trame " + trame[6] + trame[5] + trame[4] + trame[3] + trame[2] + trame[1] + trame[0]);
+      if (trame[6] == 0) {
+        $(".bloc_2grand").hide(1000,"linear");
+        $(".bloc_2petit").show(1000,"linear");
+      }
+
+      if (trame[6] == 1) {
+        $(".bloc_2grand").show(1000,"linear");
+        $(".bloc_2petit").hide(1000,"linear");
+      }
+
+
+      if(trame[5] == 0){
+        $(".bloc_3grand").hide(1000,"linear");
+        $(".bloc_3petit").show(1000,"linear");
+      }
+
+
+      if(trame[5] == 1){
+        $(".bloc_3grand").show(1000,"linear");
+        $(".bloc_3petit").hide(1000,"linear");
+      }
+
+
+      if(trame[4] == 0){
+        $(".bloc_4grand").hide(1000,"linear");
+        $(".bloc_4petit").show(1000,"linear");
+      }
+
+
+      if(trame[4] == 1){
+        $(".bloc_4grand").show(1000,"linear");
+        $(".bloc_4petit").hide(1000,"linear");
+      }
+
+
+      if(trame[3] == 0){
+        $(".bloc_5grand").hide(1000,"linear");
+        $(".bloc_5petit").show(1000,"linear");
+      }
+
+
+      if(trame[3] == 1){
+        $(".bloc_5grand").show(1000,"linear");
+        $(".bloc_5petit").hide(1000,"linear");
+      }
+
+
+      if(trame[2] == 0){
+        $(".bloc_6grand").hide(1000,"linear");
+        $(".bloc_6petit").show(1000,"linear");
+      }
+
+
+      if(trame[2] == 1){
+        $(".bloc_6grand").show(1000,"linear");
+        $(".bloc_6petit").hide(1000,"linear");
+      }
+
+
+      if(trame[1] == 0){
+        $(".bloc_7grand").hide(1000,"linear");
+        $(".bloc_7petit").show(1000,"linear");
+      }
+
+
+      if(trame[1] == 1){
+        $(".bloc_7grand").show(1000,"linear");
+        $(".bloc_7petit").hide(1000,"linear");
+      }
+
+
+
+      if(trame[0] == 0){
+        $(".bloc_8grand").hide(1000,"linear");
+        $(".bloc_8petit").show(1000,"linear");
+      }
+
+
+      if(trame[0] == 1){
+        $(".bloc_8grand").show(1000,"linear");
+        $(".bloc_8petit").hide(1000,"linear");
+      }
+
+
+
+    }
+
+
+
+
+    
+  }
+
+
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+    body{
+      margin: 0px;
+      background: linear-gradient(330deg, rgba(225, 225, 225, 0.05) 0%, rgba(225, 225, 225, 0.05) 33.333%,rgba(114, 114, 114, 0.05) 33.333%, rgba(114, 114, 114, 0.05) 66.666%,rgba(52, 52, 52, 0.05) 66.666%, rgba(52, 52, 52, 0.05) 99.999%),linear-gradient(66deg, rgba(181, 181, 181, 0.05) 0%, rgba(181, 181, 181, 0.05) 33.333%,rgba(27, 27, 27, 0.05) 33.333%, rgba(27, 27, 27, 0.05) 66.666%,rgba(251, 251, 251, 0.05) 66.666%, rgba(251, 251, 251, 0.05) 99.999%),linear-gradient(225deg, rgba(98, 98, 98, 0.05) 0%, rgba(98, 98, 98, 0.05) 33.333%,rgba(222, 222, 222, 0.05) 33.333%, rgba(222, 222, 222, 0.05) 66.666%,rgba(228, 228, 228, 0.05) 66.666%, rgba(228, 228, 228, 0.05) 99.999%),linear-gradient(90deg, rgb(28, 20, 63),rgb(40, 160, 253));
+    }
+
+.container{
+  
+  width: 620px;
+  height: 360px;
+
+}
+
+.explication{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  position: absolute;
+  width: 300px;
+  height: 170px;
+  top:50px;
+  left: 304px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.binaire{
+  position: absolute;
+  width: 80px;
+  height: 24px;
+  top:156px;
+  left: 10px;
+  font-family: 'Montserrat', sans-serif;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #FFFFFF;
+}
+
+.decimal{
+  position: absolute;
+  width: 80px;
+  height: 24px;
+  top:69px;
+  left: 10px;
+  font-family: 'Montserrat', sans-serif;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #FFFFFF;
+
+}
+
+.hexadecimal{
+  position: absolute;
+  width: 132px;
+  height: 24px;
+  top:112px;
+  left: 10px;
+  font-family: 'Montserrat', sans-serif;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #FFFFFF;
+}
+
+.entrée_1{
+  position: absolute;
+  width: 120px;
+  height: 24px;
+  top:69px;
+  left:132px;
+  background: #212121;
+  border:none;
+  color: white;
+}
+
+.entrée_2{
+  position: absolute;
+  width: 120px;
+  height: 24px;
+  top:112px;
+  left:132px;
+  background: #212121;
+  border:none;
+  color: white;
+}
+
+.entrée_3{
+  position: absolute;
+  width: 120px;
+  height: 24px;
+  top:156px;
+  left:132px;
+  background: #212121;
+  border:none;
+  color: white;
+}
+
+.bouton_1{
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top:69px;
+  left: 256px;
+  background: #212121;
+  border:none;
+  color: white;
+}
+
+.bouton_2{
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top:112px;
+  left: 256px;
+  background: #212121;
+  border:none;
+  color: white;
+}
+
+
+.bouton_3{
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top:156px;
+  left: 256px;
+  background: #212121;
+  border:none;
+  color: white;
+}
+
+.trame{
+  position: absolute;
+  width: 100%;
+  height: 145px;
+  float: left;
+  top: 232px;
+  background: #212121;
+}
+
+.draw_button{
+  position: absolute;
+  width: 120px;
+  height: 24px;
+  top: 200px;
+  left: 80px;
+  background: #212121;
+  border:none;
+  color: white;
+}
+
+
+.bloc_1petit{
+  border:solid 1px white;
+  position: absolute;
+  width: 64px;
+  height: 5px;
+  top: 91px;
+  left: 0px;
+  background: #2F3640;
+}
+
+.bloc_2grand{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 32px;
+  left: 64px;
+  background: #2F3640;
+}
+
+.bloc_2petit{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 5px;
+  top: 91px;
+  left: 64px;
+  background: #2F3640;
+}
+
+.bloc_3grand{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 32px;
+  left: 128px;
+  background: #2F3640;
+}
+
+.bloc_3petit{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 5px;
+  top: 91px;
+  left: 128px;
+  background: #2F3640;
+}
+
+.bloc_4grand{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 32px;
+  left: 192px;
+  background: #2F3640;
+}
+
+.bloc_4petit{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 5px;
+  top: 91px;
+  left: 192px;
+  background: #2F3640;
+}
+
+.bloc_5grand{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 32px;
+  left: 256px;
+  background: #2F3640;
+}
+
+.bloc_5petit{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 5px;
+  top: 91px;
+  left: 256px;
+  background: #2F3640;
+}
+
+.bloc_6grand{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 32px;
+  left: 320px;
+  background: #2F3640;
+}
+
+.bloc_6petit{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 5px;
+  top: 91px;
+  left: 320px;
+  background: #2F3640;
+}
+
+.bloc_7grand{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 32px;
+  left: 384px;
+  background: #2F3640;
+}
+
+.bloc_7petit{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 5px;
+  top: 91px;
+  left: 384px;
+  background: #2F3640;
+}
+
+.bloc_8grand{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 32px;
+  left: 448px;
+  background: #2F3640;
+}
+
+.bloc_8petit{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 5px;
+  top: 91px;
+  left: 448px;
+  background: #2F3640;
+}
+
+.stop{
+  border:solid 1px white;
+  
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top:32px;
+  left: 512px;
+  background: #2F3640;
+}
+
+.stop-2{
+  border:solid 1px white;
+
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top:32px;
+  left: 576px;
+  background: #2F3640;
+}
+
+.text-stop{
+
+  position: absolute;
+  width: 49px;
+  height: 18px;
+  top: 100px;
+  left: 512px;
+  font-family: 'Montserrat', sans-serif;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: white;
+}
+
+.text-stop-2{
+
+  position: absolute;
+  width: 49px;
+  height: 18px;
+  top: 100px;
+  left: 576px;
+  font-family: 'Montserrat', sans-serif;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: white;
+}
+
+
+.text-start{
+  position: absolute;
+  width: 49px;
+  height: 18px;
+  top: 100px;
+  left: 0px;
+  font-family: 'Montserrat', sans-serif;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: white;
+
+}
+  </style>
+</html>
