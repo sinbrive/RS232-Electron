@@ -2,51 +2,53 @@
 <html>
 <head>
 	<title>RS232 plot</title>
-	<style>
-	#res {
-		display:none;
-	}
-	</style>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1> Plotting RS232 </h1> 
     <section>
-        <p>Bonjour, veuillez entrer les caractéristiques de la liaison série:
-        </p>
-        <hr>
-        <div>
-            <label for="Bits">Bits number</label>
-            <input id="bits" type="number" placeholder="7 or 8">
-        </div>
-        <div>
-            <label for="Stops">Stop bits number</label>
-            <input id="stops" type="number" placeholder="0, 1 or 2">
-        </div>
-        <div>
-            <label for="Rate">rate</label>
-            <input id="rate" type="number" placeholder="9600">
-		</div>
-		<div>
-            <label for="Octet">octet</label>
-            <input id="octet" type="number" placeholder="55">
-		</div>
-		<br>
-		<input type="submit" onclick="rs232()"  value="OK">
+		<h1>Inputs:</h1>
+		<form>
+			<p>Choisir les options de la liaison RS232 ?</p>
+			<select id="bits">
+				<option value='8'>8 bits</option>
+				<option value='7'>7 bits</option>
+			</select>
+	
+			<select id="stops">
+				<option value='1'>1 stop</option>
+				<option value='2'>2 stops</option>
+			</select>
+			<br>
+			<select id="rate">
+				<option value='2400'>2400 bps</option>
+				<option value='4800'>4800 bps</option>
+				<option value='9600'>9600 bps</option>
+				<option value='19200'>19200 bps</option>
+				<option value='115200'>115200 bps</option>
+			</select>
+			<br>
+			<!-- <label> Débit ? </label><input  id="debit" type="text" value="9600"> -->
+			<!-- <br> -->
+			<label> Octet à transmettre ? </label><input id="octet" type="text" value="68">
+			<br>
+			<input type="button" onclick="rs232()" value="ok">
+		</form>
+	
 	</section>
 	<section>
-		<h1 id="res">Outputs :</h1>
+		<h1 id="res">Results :</h1>
 		<hr>
-		<label for="Yrinput">Your input :</label>
+		<label for="Yrinput">Your input:</label>
 		<p id="data"></p>
 
-		<label for="signal">Signal</label>
+		<label for="signal">Signal:</label>
 		<p id="ones"></p>
 		<p id="vide"></p>
 		<p id="zeros"></p>
 
-		<label for="T bit">Bit duration</label>
+		<label for="T bit">Bit duration:</label>
 		<p id="tBit"></p>
-		<label for="O bit">Octet duration</label>
+		<label for="O bit">Octet duration:</label>
 		<p id="tAllBits"></p>
 	</section>
 	<script src="rs232.js"></script>

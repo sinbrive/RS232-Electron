@@ -1,0 +1,16 @@
+#ones, #zeros, #vide {  
+    font-family: "Courier New";  /* for &nbsp display */
+    font-size: 1em;
+    background-color: #E7E5DC;
+    /* padding :0px 0px 0px 0px; */
+    width: 50%;
+    margin: 0px;
+    };
+
+label {
+    background-color : #2c00f0;
+    };
+
+#res {
+    display:none;
+};
