@@ -8,6 +8,7 @@ Lab for my students done with Electron
 * npm init -y, give answsers to question
 * package.json is created:
 ** change name, main and scripts and description:
+``
   "name": "rs232",
   "version": "1.0.0",
   "main": "index.js",
@@ -22,6 +23,7 @@ Lab for my students done with Electron
     "electron": "^7.1.7"
   }
 }
+```
 * create index.html, index.js (check electron quickstart if need be) and .gitignore (gnore node_modules folder)
 * npm start 
 
