@@ -27,6 +27,18 @@ Lab for my students done with Electron
 * create index.html, index.js (check electron quickstart if need be) and .gitignore (ignore node_modules folder)
 * npm start 
 
+```
+$ git remote add origin https://github.com/user/repo.git
+# Set a new remote
 
+$ git remote -v
+# Verify new remote
+> origin  https://github.com/user/repo.git (fetch)
+> origin  https://github.com/user/repo.git (push)
 
+$ git status
+$ git add .
+$ git commit -m "????"
+$ git push origin master
+```
 
