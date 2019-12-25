@@ -40,5 +40,10 @@ $ git status
 $ git add .
 $ git commit -m "????"
 $ git push origin master
+$ git branch
+$ git branch new-feature
+$ git checkout new-feature
+$ git checkout master 
+git merge new-feature
 ```
 
