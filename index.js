@@ -12,11 +12,13 @@ function createWindow () {
     // Set the initial width to 500px
     width: 600,
     // Set the initial height to 400px
-    height: 800,
+    height: 700,
     // set the title bar style
     titleBarStyle: 'hiddenInset',
     // set the background color to black
     backgroundColor: "#325832",
+    //  one size
+    resizable: false
   })
 
   // no menu bar please

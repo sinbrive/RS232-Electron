@@ -1,4 +1,4 @@
-const selectBtn = document.getElementById('btn')
+const selectBtn = document.querySelector('#btn');
 selectBtn.addEventListener('click', function (event) {
     rs232();
   })

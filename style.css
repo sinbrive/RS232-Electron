@@ -2,7 +2,6 @@ body {
     color:rgb(0, 204, 255);
     font-family: "Courier New"; 
     margin-left: 20px;
-  
 }
 
 #section-input {
@@ -28,10 +27,6 @@ h1 {
 #data{
     padding:0;
 }   
-
-/* #ones, #vide, #zeros{
-    color:rgb(255, 157, 0);
-} */
 
 span {
     color:#FFFF10;
