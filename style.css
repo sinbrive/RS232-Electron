@@ -5,6 +5,10 @@ body {
   
 }
 
+#section-input {
+    color : black;
+}
+
 hr{
     margin-top: 0;
 }
@@ -17,7 +21,6 @@ h1 {
     background-color:rgb(0, 247, 255);
 }
 
-
 #octet{
     width:5%;
 }
@@ -26,12 +29,11 @@ h1 {
     padding:0;
 }   
 
-#ones, #vide, #zeros{
+/* #ones, #vide, #zeros{
     color:rgb(255, 157, 0);
-}
+} */
 
 span {
     color:#FFFF10;
-    display:inline;
 }
 
