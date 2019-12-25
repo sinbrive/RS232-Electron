@@ -2,11 +2,34 @@
 <html>
 <head>
 	<title>RS232 plot</title>
-	<link rel="stylesheet" href="style.css">
+	<style>
+	
+	
+	#ones, #zeros, #vide {  /* for &nbsp display */
+		font-family: "Courier New";  
+		font-size: 1em;
+		background-color: #E7E5DC;
+		width: 50%;
+		margin: 0px;
+	};
+	
+		
+	#res {
+		display:none;
+	};
+	
+	button{
+		background-color:orange;
+	};
+	
+	
+	</style>
+	<!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
     <section>
 		<h1>Inputs:</h1>
+		<hr>
 		<form>
 			<p>Give RS232 informations: ?</p>
 			<select id="bits">
@@ -29,7 +52,7 @@
 			<br>
 			<!-- <label> Débit ? </label><input  id="debit" type="text" value="9600"> -->
 			<!-- <br> -->
-			<label> Octet à transmettre ? </label><input id="octet" type="text" value="68">
+			<span> Byte to be transmitted ? </span><input id="octet" type="text" value="68">
 			<br>
 			<input type="button" onclick="rs232()" value="ok">
 		</form>
@@ -38,17 +61,17 @@
 	<section>
 		<h1 id="res">Results :</h1>
 		<hr>
-		<label for="Yrinput">Your input:</label>
+		<span>Your input:</span>
 		<p id="data"></p>
 
-		<label for="signal">Signal:</label>
+		<span>Signal:</span>
 		<p id="ones"></p>
 		<p id="vide"></p>
 		<p id="zeros"></p>
 
-		<label for="T bit">Bit duration:</label>
+		<span>Bit duration:</span>
 		<p id="tBit"></p>
-		<label for="O bit">Octet duration:</label>
+		<span>Octet duration:</span>
 		<p id="tAllBits"></p>
 	</section>
 	<script src="rs232.js"></script>
