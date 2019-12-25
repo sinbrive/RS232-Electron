@@ -7,8 +7,8 @@ Lab for my students done with Electron
 * cd myfolder
 * npm init -y, give answsers to question
 * package.json is created:
-** change name, main and scripts and description:
-``
+* * change name, main and scripts and description:
+```
   "name": "rs232",
   "version": "1.0.0",
   "main": "index.js",
