@@ -4,12 +4,9 @@ body {
     margin-left: 20px;
 }
 
-#section-input {
-    color : black;
-}
-
 hr{
     margin-top: 0;
+    margin-bottom: 5px;
 }
 
 h1 {
@@ -29,12 +26,20 @@ h1 {
 }   
 
 
-span {
+#section-input span {
     color:#FFFF10;
 }
 
 .main-header {
     font-size:2em;
     text-align: center;
+}
+
+#res {
+    display:none;
+}
+
+#tBit, #tAllBits {
+    display:inline-block;
 }
 

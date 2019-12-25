@@ -6,7 +6,7 @@
 </head>
 <body>
 	<header class="main-header">Plotting RS232</header> <!--put here navigation and other stuff-->
-    <section id="section-input">
+    <section id="section-form">
 		<h1>Inputs:</h1>
 		<hr>
 		<form>
@@ -29,12 +29,13 @@
 			</select>
 			<br>
 			<br>
-			Byte to be transmitted ? <input id="octet" type="text" value="68">
+			<span>Byte to be transmitted ? </span>
+			<input id="octet" type="text" value="68">
 			<br><br>
 			<input type="button" id="btn" value="ok">
 		</form>
-	</section i>
-	<section>
+	</section>
+	<section id="section-input">
 		<h1 id="res">Results:</h1>
 		<hr>
 		<span>Your input:</span>
@@ -45,8 +46,7 @@
 		<p id="vide"></p>
 		<p id="zeros"></p>
 		<br>
-		<span>Bit duration:</span>
-		<p id="tBit"></p>
+		<span>Bit duration:</span><p id="tBit"></p>
 		<span>Byte duration:</span>
 		<p id="tAllBits"></p>
 	</section>
