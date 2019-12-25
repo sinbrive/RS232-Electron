@@ -5,7 +5,7 @@ Lab for my students done with Electron
 * check version : node -v, npm -v
 * install git
 * cd myfolder
-* npm init -y, give answsers to question
+* npm init -y, give answsers to questions
 * package.json is created:
 * * change name, main and scripts and description:
 ```
@@ -24,7 +24,7 @@ Lab for my students done with Electron
   }
 }
 ```
-* create index.html, index.js (check electron quickstart if need be) and .gitignore (gnore node_modules folder)
+* create index.html, index.js (check electron quickstart if need be) and .gitignore (ignore node_modules folder)
 * npm start 
 
 
