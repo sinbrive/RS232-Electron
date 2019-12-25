@@ -1,3 +1,4 @@
+// from Electron quickstart wit some additinal topics
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
@@ -9,13 +10,13 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    // Set the initial width to 500px
+    // Set the initial width 
     width: 600,
-    // Set the initial height to 400px
+    // Set the initial height 
     height: 700,
     // set the title bar style
     titleBarStyle: 'hiddenInset',
-    // set the background color to black
+    // set the background color 
     backgroundColor: "#325832",
     //  one size
     resizable: false
