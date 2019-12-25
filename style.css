@@ -1,12 +1,37 @@
+body {
+    color:rgb(0, 204, 255);
+    font-family: "Courier New"; 
+    margin-left: 20px;
+  
+}
+
+hr{
+    margin-top: 0;
+}
+
+h1 {
+    margin-bottom:0;
+    color:red;
+}
+#btn{
+    background-color:rgb(0, 247, 255);
+}
 
 
-#ones, #zeros, #vide {  /* for &nbsp display */
-    font-family: "Courier New";  
-    font-size: 1em;
-    background-color: #E7E5DC;
-    width: 50%;
-    margin: 0px;
-};
+#octet{
+    width:5%;
+}
 
+#data{
+    padding:0;
+}   
 
+#ones, #vide, #zeros{
+    color:rgb(255, 157, 0);
+}
+
+span {
+    color:#FFFF10;
+    display:inline;
+}
 

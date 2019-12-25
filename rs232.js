@@ -1,22 +1,37 @@
-function rs232() {
+const selectBtn = document.getElementById('btn')
+selectBtn.addEventListener('click', function (event) {
+    rs232();
+  })
 
+
+function rs232() {
+    console.log("appelée");
 	const bits = document.querySelector('#bits').value;
 	const stops = document.querySelector('#stops').value;
 	const octet = document.querySelector('#octet').value;
 	const rate = document.querySelector('#rate').value;
 
+    if (bits==7 && octet>127) {
+        document.getElementById('data').innerHTML = "Error : 7 bits with byte>127 !";
+        document.getElementById('ones').innerHTML = "";
+	    document.getElementById('vide').innerHTML = "";
+        document.getElementById('zeros').innerHTML="";
+        document.getElementById('tBit').innerHTML = "";
+        document.getElementById('tAllBits').innerHTML = "";
+        return;
+    }
 
     document.getElementById("res").style.display="block";
 
 	document.getElementById('data').innerHTML = bits + ' bits, ' + stops + ' stops, ' +
-		' debit:' + rate + 'b/s, octet: 0x' + Number(octet).toString(16) + '(' + Number(octet).toString(2) + ')';
+		' rate:' + rate + 'bps, octet: 0x' + Number(octet).toString(16) + '(' + Number(octet).toString(2) + ')';
 
 	let bitDuration = Math.round(1000000 / rate) / 1000;
 	document.getElementById('tBit').innerHTML =  bitDuration + "ms";
 
 	let octetDuration= (Number(bits) + Number(stops) + 1) * bitDuration; 
 	octetDuration =Math.round(1000 * octetDuration) / 1000;
-	document.getElementById('tAllBits').innerHTML = octetDuration + "ms";
+	document.getElementById('tAllBits').innerHTML = octetDuration + "ms"+"  ("+(Number(bits) + Number(stops) + 1)+"bits)";
 
 	var str = '';
 	
@@ -43,9 +58,10 @@ function rs232() {
 function display(st, oneZero) {
 	let s = '';
 	for (var i = 0; i < st.length; i++) {
-		if (st[i] == oneZero) s = '---' + s;
-		else s = '&nbsp;&nbsp;&nbsp;' + s;
+		if (st[i] == oneZero) s = '***' + s;
+		else s = '&nbsp'+'&nbsp'+'&nbsp' + s;
 	}
 	return s;
 }
+
 

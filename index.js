@@ -9,9 +9,19 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600
+    // Set the initial width to 500px
+    width: 600,
+    // Set the initial height to 400px
+    height: 800,
+    // set the title bar style
+    titleBarStyle: 'hiddenInset',
+    // set the background color to black
+    backgroundColor: "#325832",
   })
+
+  // no menu bar please
+  mainWindow.autoHideMenuBar = true;
+  //mainWindow.setAutoHideMenuBar(true); // deprecated
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
@@ -26,6 +36,8 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+
 }
 
 // This method will be called when Electron has finished
@@ -48,3 +60,4 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
